@@ -48,7 +48,7 @@ public class ServerApp {
     public static HashMap<String, String> users = new HashMap<>();
     public static HashMap<String, Queue<String>> queueMap = new HashMap<>();
     ForkJoinPool forkJoinPool = new ForkJoinPool();
-    ExecutorService executor = Executors.newFixedThreadPool(3);
+    ExecutorService executor = Executors.newFixedThreadPool(10);
     public static ExecutorService invokeExecutor = Executors.newCachedThreadPool();
     public static HashMap<String, String> logins = new HashMap<>();
 
@@ -94,7 +94,6 @@ public class ServerApp {
                         executor.submit(thread1);
                         sleep(1);
                     }
-
                     if (key.isValid() && key.isWritable()) {
                         SocketChannel socketChannel = (SocketChannel) key.channel();
                         String answer;
@@ -105,7 +104,7 @@ public class ServerApp {
                                 if ("CommandMap".equals(answer)){
                                     packagedResponse = new PackagedResponse(createCommandMap(), String.format("Connection accepted!\n%s\nType \"login\" to sign in or \"register\" to sign up", firstAnswer));
                                 } else {
-                                    packagedResponse = new PackagedResponse(answer, 1, 1, ResponseStatus.OK);
+                                    packagedResponse = new PackagedResponse(answer, ResponseStatus.OK);
                                 }
                             } else {
                                 iterator.remove();

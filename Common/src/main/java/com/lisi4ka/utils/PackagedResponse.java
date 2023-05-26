@@ -5,15 +5,7 @@ import java.io.Serializable;
 public class PackagedResponse implements Serializable {
     private final String message;
     private CommandMap commandMap = null;
-    private int packageCount;
-    private int packageNumber;
 
-    public PackagedResponse(String message, int packageCount, int packageNumber, ResponseStatus status){
-        this.message = message;
-        this.packageCount = packageCount;
-        this.status = status;
-        this.packageNumber = packageNumber;
-    }
     public PackagedResponse(CommandMap commandMap, String message){
         this.message = message;
         this.status = ResponseStatus.Map;
@@ -27,11 +19,6 @@ public class PackagedResponse implements Serializable {
         return message;
     }
     public CommandMap getCommandMap(){return commandMap;}
-
-    public int getPackageCount() {
-        return packageCount;
-    }
-    public int getPackageNumber(){return packageNumber;}
     public ResponseStatus status;
 }
 
