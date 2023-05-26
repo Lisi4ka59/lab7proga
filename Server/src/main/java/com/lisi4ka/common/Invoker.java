@@ -28,31 +28,32 @@ public class Invoker {
         commands.put("execute_script", new NullCommand());
         commands.put("exit", new NullCommand());
     }
-    public String run(PackagedCommand packagedCommand) {
-        if (packagedCommand != null){
-            return run(packagedCommand.getCommandName() + " " + packagedCommand.getCommandArguments());
-        }
-        throw new IllegalArgumentException("Incorrect command format");
-    }
-    public String run(String commandText) {
+    public String run(String commandText, String user) {
         try {
             String[] command =  commandText.split(" ");
             if (commands.containsKey(command[0])) {
                 Command cmd = commands.get(command[0]);
                 String result;
-                if (command.length==1) {
-                    result = cmd.execute();
-                }
-                else{
-                    result = cmd.execute(command[1]);
+                if ("add".equals(command[0]) || "add_if_min".equals(command[0]) || "update".equals(command[0]) || "remove_by_id".equals(command[0])){
+                    result = cmd.execute(command[1], user);
+                }else if("clear".equals(command[0]) || "remove_head".equals(command[0]) || "remove_first".equals(command[0])){
+                    result = cmd.execute("", user);
+                }else {
+                    if (command.length == 1) {
+                        result = cmd.execute();
+                    } else {
+                        result = cmd.execute(command[1]);
+                    }
                 }
                 return result;
             }
             else {
-                    return String.format("\nUnknown command \"%s\". Type \"help\" to see list of commands\n", commandText);
+                return String.format("Unknown command \"%s\". Type \"help\" to see list of commands", commandText);
             }
         } catch (Exception e){
-            return String.format("\nError while execution command \"%s\"\n", commandText);
+            System.out.println(e);
+            e.printStackTrace(System.out);
+            return String.format("Error while execution command \"%s\"\n", commandText);
         }
     }
 }

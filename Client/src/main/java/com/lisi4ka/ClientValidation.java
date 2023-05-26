@@ -7,11 +7,15 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import static com.lisi4ka.ClientApp.commandMap;
+import static java.lang.Thread.sleep;
 
 public class ClientValidation {
     public static PackagedCommand[] validation() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
+            try {
+                sleep(100);
+            }catch (Exception ignored){}
             System.out.print("\n> ");
             try {
                 String[] commandText = scanner.nextLine().trim().split(" ");
@@ -26,7 +30,7 @@ public class ClientValidation {
                         System.out.print("Unknown command! Type \"help\" to open command list");
                     }
                 } catch (IllegalArgumentException ex) {
-                    System.out.printf(ex.getMessage());
+                    System.out.print(ex.getMessage());
                 }
             } catch (NoSuchElementException e) {
                 System.out.println("Program termination");

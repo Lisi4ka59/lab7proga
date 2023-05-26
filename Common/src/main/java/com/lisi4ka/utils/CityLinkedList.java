@@ -10,8 +10,12 @@ import java.io.Writer;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
+import java.util.concurrent.locks.ReentrantLock;
+
+
 
 public class CityLinkedList extends LinkedList<City> implements Jsonable {
+    public static ReentrantLock reentrantlock = new ReentrantLock();
     public static Long idRepeat = 0L;
     private final LocalDateTime creationCollectionDate;
     public CityLinkedList () {
@@ -21,6 +25,38 @@ public class CityLinkedList extends LinkedList<City> implements Jsonable {
     public String getCreationCollectionDate() {
         return creationCollectionDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
     }
+    @Override
+    public boolean add(City city){
+        reentrantlock.lock();
+        try {
+            return super.add(city);
+        }
+        finally
+        {
+            reentrantlock.unlock();
+        }
+    }
+    @Override
+    public void clear(){
+        reentrantlock.lock();
+        try {
+            super.clear();
+        }
+        finally
+        {
+            reentrantlock.unlock();
+        }
+    }
+    @Override
+    public boolean remove(Object city) {
+        reentrantlock.lock();
+        try {
+            return super.remove(city);
+        } finally {
+            reentrantlock.unlock();
+        }
+    }
+
     @Override
     public String toJson() {
         final StringWriter writable = new StringWriter();

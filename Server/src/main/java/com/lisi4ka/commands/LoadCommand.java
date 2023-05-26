@@ -1,56 +1,63 @@
 package com.lisi4ka.commands;
 
-import com.github.cliftonlabs.json_simple.*;
-import com.lisi4ka.models.City;
+import com.lisi4ka.models.*;
 import com.lisi4ka.utils.CityComparator;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.sql.*;
 import java.util.List;
 
-import static com.lisi4ka.utils.IdGenerator.getUniqueId;
+import static com.lisi4ka.common.ServerApp.logins;
+import static com.lisi4ka.utils.BdConnect.conn;
+
 
 public class LoadCommand implements Command {
     private final List<City> collection;
-    public static String filepath;
-
-    public LoadCommand(List<City> collection){
-
+    public LoadCommand(List<City> collection) {
         this.collection = collection;
     }
+
     private String load() {
-        String path = System.getenv("CITIES_PATH");
         try {
-            File file = new File(path);
-            if (!file.exists() || file.isDirectory() || !file.canRead() || !file.canWrite()) {
-                System.out.println("Cities path not found!");
-                System.exit(0);
-            }
-            Reader reader = Files.newBufferedReader(Paths.get(path));
-            JsonObject jsonObject = (JsonObject) Jsoner.deserialize(reader);
-            JsonArray jsonArray = (JsonArray)jsonObject.get("cities");
-            filepath = path;
-            for (Object obj: jsonArray) {
-                JsonObject jo = (JsonObject) obj;
-                City city = new City(jo);
-                city.setId(getUniqueId(city.getId()));
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select city.id, name, coordinate_x, coordinate_y, population, area, meters_above_sea_level, climate, government," +
+                    " standard_of_living, governor_age, governor_birthday, creation_city_date, login from city left join account on user_id = account.id");
+            while (rs.next()) {
+                City city = new City(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        new Coordinates(rs.getDouble("coordinate_x"), rs.getFloat("coordinate_y")),
+                        rs.getLong("population"),
+                        rs.getDouble("area"),
+                        rs.getInt("meters_above_sea_level"),
+                        Climate.valueOf(rs.getString("climate")),
+                        (rs.getString("government") == null) ? null :
+                                Government.valueOf(rs.getString("government")),
+                        (rs.getString("standard_of_living") == null) ? null :
+                                StandardOfLiving.valueOf(rs.getString("standard_of_living")),
+                        (rs.getInt("governor_age") == 0)  ? null :
+                                new Human(rs.getLong("governor_age"), rs.getDate("governor_birthday")),
+                        rs.getString("login")
+                );
+                city.setCreationDate(rs.getTimestamp("creation_city_date").toLocalDateTime());
                 collection.add(city);
+                collection.sort(new CityComparator());
             }
-            collection.sort(new CityComparator());
-            return "Collection uploaded";
-        } catch (JsonException | IllegalArgumentException | NullPointerException e) {
-            return "Can not upload collection, data in the file incorrect! " + e.getMessage()  + "\n";
-        } catch (SecurityException e) {
-            return "Do not have sufficient rights to read file %s\n" + path + "\n";
-        } catch (IOException e) {
-            return "Can not upload collection, the file " + path + " does not exist!\n";
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery("select login, password from account");
+            while (resultSet.next()) {
+                String login = resultSet.getString("login");
+                String password = resultSet.getString("password");
+                logins.put(login, password);
+            }
+        } catch (Exception ex) {
+            System.out.println("ошибка при подключении к бд");
         }
+
+        return "Collection uploaded";
     }
+
     @Override
-    public String execute(){
+    public String execute() {
         return load();
     }
 }

@@ -4,11 +4,61 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03bb5f60-761b-45bb-8642-e2953f081f40" name="Changes" comment="" />
+    <list default="true" id="03bb5f60-761b-45bb-8642-e2953f081f40" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/main/java/com/lisi4ka/InputThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Common/src/main/java/com/lisi4ka/utils/PasswordConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Common/src/main/java/com/lisi4ka/validation/LogIn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Common/src/main/java/com/lisi4ka/validation/LogOut.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Common/src/main/java/com/lisi4ka/validation/Register.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/common/AnswerManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/common/InvokerManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/common/MegaAnswerManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/common/RequestManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/utils/BdConnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/com/lisi4ka/ClientApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/com/lisi4ka/ClientApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/com/lisi4ka/ClientValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/com/lisi4ka/ClientValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/com/lisi4ka/models/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/com/lisi4ka/models/City.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/com/lisi4ka/models/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/com/lisi4ka/models/Coordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/com/lisi4ka/utils/CityLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/com/lisi4ka/utils/CityLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/com/lisi4ka/utils/PackagedCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/com/lisi4ka/utils/PackagedCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/com/lisi4ka/utils/PackagedResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/com/lisi4ka/utils/PackagedResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/com/lisi4ka/utils/ResponseStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/com/lisi4ka/utils/ResponseStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/AddCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/AddCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/AddIfMinCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/AddIfMinCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/ClearCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/ClearCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/LoadCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/LoadCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/RemoveByIdCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/RemoveByIdCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/RemoveFirstCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/RemoveFirstCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/RemoveHeadCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/RemoveHeadCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/ShowCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/ShowCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/UpdateIdCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/commands/UpdateIdCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/common/Invoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/common/Invoker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/common/ServerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/common/ServerApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/utils/DefaultSave.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/utils/IdGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lisi4ka/Main.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -18,19 +68,93 @@
     </option>
   </component>
   <component name="ProjectId" id="2QIZAznnDA0u0ZpJYBt17puA9zm" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Lisi4ka/IdeaProjects/Laba_6_release",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.lisi4ka" />
+      <recent name="com.lisi4ka.common" />
+      <recent name="com.lisi4ka.utils" />
+      <recent name="com.lisi4ka.validation" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Server">
+    <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lisi4ka.Client" />
+      <module name="Client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lisi4ka.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lisi4ka.common.Server" />
+      <module name="Server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lisi4ka.common.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="lab7proga" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="lab7proga" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Client" />
+      <item itemvalue="Application.Server" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Server" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -40,7 +164,27 @@
       <option name="presentableId" value="Default" />
       <updated>1685042918212</updated>
       <workItem from="1685042919469" duration="3000" />
+      <workItem from="1685085902995" duration="33291000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Server/src/main/java/com/lisi4ka/common/MegaAnswerManager.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="sc.getRemoteAddress().toString()" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

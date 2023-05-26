@@ -1,7 +1,6 @@
 package com.lisi4ka;
 
 import com.lisi4ka.utils.CommandMap;
-import com.lisi4ka.utils.PackagedCommand;
 import com.lisi4ka.utils.PackagedResponse;
 
 import java.io.*;
@@ -14,7 +13,6 @@ import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 import java.util.*;
 
-import static com.lisi4ka.utils.Serializer.serialize;
 import static java.lang.Thread.sleep;
 
 
@@ -23,7 +21,7 @@ public class ClientApp {
     static Queue<ByteBuffer> queue = new LinkedList<>();
     public static CommandMap commandMap = null;
     static boolean connectionAccepted = true;
-    static boolean writeFlag = true;
+    volatile static boolean writeFlag = true;
 
     private void run() {
         try {
@@ -56,7 +54,7 @@ public class ClientApp {
                     break;
                 }
                 sc.close();
-                System.out.println("Lost server connection. Repeat connecting in 10 seconds");
+                System.out.println("\nLost server connection. Repeat connecting in 10 seconds");
                 connectionAccepted = true;
                 sleep(10000);
             }
@@ -66,8 +64,7 @@ public class ClientApp {
             System.exit(0);
         }
     }
-        public static Boolean processReadySet (Set readySet)
-            throws Exception {
+        public static Boolean processReadySet (Set readySet) throws Exception {
 
             SelectionKey key = null;
             Iterator iterator = readySet.iterator();
@@ -75,7 +72,6 @@ public class ClientApp {
                 key = (SelectionKey) iterator.next();
                 iterator.remove();
             }
-            writeFlag = false;
             assert key != null;
             if (key.isConnectable()) {
                 boolean connected = false;
@@ -107,37 +103,20 @@ public class ClientApp {
                         ois.close();
                 } catch (EOFException ignored) {}
                 if (packagedResponse != null) {
-                    if (packagedResponse.getMessage() != null) {
-                        System.out.print(packagedResponse.getMessage());
-                        if (packagedResponse.getMessage().equals("Connection refused")){
-                            System.exit(0);
-                        }
-                        if (packagedResponse.getPackageCount() <= packagedResponse.getPackageNumber()){
-                            writeFlag = true;
-                        }
-                    } else if (packagedResponse.getCommandMap() != null) {
+                    if (packagedResponse.getCommandMap() != null) {
                         commandMap = packagedResponse.getCommandMap();
+                        System.out.print(packagedResponse.getMessage());
+                    }
+                    else if(packagedResponse.getMessage() != null){
+                        System.out.print(packagedResponse.getMessage());
                     }
                 }
             }
-            if (key.isWritable() && writeFlag && commandMap != null) {
+            if (key.isWritable() && commandMap != null && writeFlag) {
                 SocketChannel socketChannel = (SocketChannel) key.channel();
-                if (queue.isEmpty()) {
-                    for (PackagedCommand packagedCommand : ClientValidation.validation()) {
-                        if ("exit".equals(packagedCommand.getCommandName())) {
-                            return true;
-                        }
-                        queue.add(ByteBuffer.wrap(serialize(packagedCommand)));
-                    }
-                }
-                if (!queue.isEmpty()) {
-                    try {
-                        socketChannel.write(queue.poll());
-                    } catch (Exception e) {
-                        System.out.println("Error while sending message!");
-                        connectionAccepted = false;
-                    }
-                }
+                Thread thread = new Thread(new InputThread(socketChannel));
+                thread.start();
+                sleep(1);
                 return false;
             }
             return false;
